@@ -12,7 +12,6 @@ body {
 
 .carousel {
   display: grid;
-  /* grid-template-columns: 3em 800px 3em; */
   grid-template-columns: 3em 80vw 3em;
   grid-template-rows: 70vh 3em;
   align-items: center;
@@ -24,14 +23,8 @@ body {
   align-self: stretch;
 }
 
-/**
- * START EDITING HERE!
- * ===================
- */
+/* Carousel contents */
 
-/**
- * Carousel contents
- */
 .carousel__contents-container {
   overflow: hidden;
 }
@@ -48,14 +41,6 @@ body {
   height: inherit;
 }
 
-/* .carousel__slide:nth-child(2) {
-  left: 800px;
-}
-
-.carousel__slide:nth-child(3) {
-  left: 1600px;
-} */
-
 .carousel__slide > a {
   display: block;
   width: inherit;
@@ -65,14 +50,12 @@ body {
 .carousel__slide img {
   width: inherit;
   height: inherit;
-  /* object-fit: cover; */
   object-fit: contain;
   object-position: center center;
 }
 
-/**
- * Buttons
- */
+/* Buttons */
+
 .carousel__button {
   padding: 0.25em;
   border: none;
@@ -92,13 +75,8 @@ body {
   display: none;
 }
 
-/* .carousel__button[hidden="true"] {
-  display: none;
-}  */
+/* Dots */
 
-/**
- * Dots
- */
 .carousel__dots {
   grid-column: 1 / -1;
   justify-self: center;
@@ -124,7 +102,3 @@ body {
 .carousel__dot.is-selected {
   background-color: var(--color-selected-state);
 }
-
-/* .is-hidden {
-  display: none;
-} */
