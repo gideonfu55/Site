@@ -68,7 +68,7 @@ dots.forEach(dot => {
 
     const slideToShow = slides[clickedDotIndex];
     const dotsLeftDistance = getComputedStyle(slideToShow).left;
-    contents.style.left = '-' + dotsLeftDistance;
+    contents.style.transform = "translate(-" + dotsLeftDistance + ")";
 
     const currentSlide = contents.querySelector('.is-selected');
     currentSlide.classList.remove('is-selected');
