@@ -12,7 +12,7 @@ nextButton.addEventListener('click', event => {
   const indexCurrentSlide = slides.indexOf(currentSlide);
 
   // => To 'move' the slide to the next slide:
-  contents.style.left = "-" + destination;
+  contents.style.transform = "translateX(-" + destination + ")";
 
   currentSlide.classList.remove("is-selected");
   nextSlide.classList.add("is-selected");
@@ -38,7 +38,7 @@ previousButton.addEventListener('click', event => {
   const indexCurrentSlide = slides.indexOf(currentSlide);
 
   const destination = getComputedStyle(previousSlide).left;
-  contents.style.left = "-" + destination;
+  contents.style.transform = "translateX(-" + destination + ")";
 
   currentSlide.classList.remove("is-selected");
   previousSlide.classList.add("is-selected");
