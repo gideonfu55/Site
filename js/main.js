@@ -1,8 +1,9 @@
-const slides = Array.from(document.querySelectorAll(".carousel__slide"));
+const carousel = document.querySelector('.carousel')
+const slides = [...carousel.querySelectorAll(".carousel__slide")];
 const contents = document.querySelector(".carousel__contents");
 const previousButton = document.querySelector('.previous-button');
 const nextButton = document.querySelector('.next-button');
-const dots = Array.from(document.querySelectorAll(".carousel__dot"));
+const dots = [...carousel.querySelectorAll(".carousel__dot")];
 
 // For displaying the next slide on each click:
 nextButton.addEventListener('click', event => {
@@ -12,7 +13,7 @@ nextButton.addEventListener('click', event => {
   const indexCurrentSlide = slides.indexOf(currentSlide);
 
   // => To 'move' the slide to the next slide:
-  contents.style.transform = "translateX(-" + destination + ")";
+  contents.style.transform = `translateX(-${destination})`;
 
   currentSlide.classList.remove("is-selected");
   nextSlide.classList.add("is-selected");
@@ -38,7 +39,7 @@ previousButton.addEventListener('click', event => {
   const indexCurrentSlide = slides.indexOf(currentSlide);
 
   const destination = getComputedStyle(previousSlide).left;
-  contents.style.transform = "translateX(-" + destination + ")";
+  contents.style.transform = `translateX(-${destination})`;
 
   currentSlide.classList.remove("is-selected");
   previousSlide.classList.add("is-selected");
@@ -59,16 +60,12 @@ previousButton.addEventListener('click', event => {
 
 dots.forEach(dot => {
   dot.addEventListener('click', event => {
-    let clickedDotIndex;
-    for (let index = 0; index < dots.length; index++) {
-      if (dots[index] === dot) {
-        clickedDotIndex = index;
-      }
-    }
+    
+    const clickedDotIndex = dots.findIndex(d => d === dot);
 
     const slideToShow = slides[clickedDotIndex];
     const dotsLeftDistance = getComputedStyle(slideToShow).left;
-    contents.style.transform = "translate(-" + dotsLeftDistance + ")";
+    contents.style.transform = `translate(-${dotsLeftDistance})`;
 
     const currentSlide = contents.querySelector('.is-selected');
     currentSlide.classList.remove('is-selected');
