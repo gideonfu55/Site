@@ -12,8 +12,8 @@ body {
 
 .carousel {
   display: grid;
-  grid-template-columns: 3em 80vw 3em;
-  grid-template-rows: 70vh 3em;
+  grid-template-columns: 2.5em 80vw 2.5em;
+  grid-template-rows: 85vh 3em;
   align-items: center;
   grid-gap: 1em;
 }
