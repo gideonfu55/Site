@@ -1,4 +1,4 @@
-# LearningToLearn
+# Learning to Learn
 Project based on Learning to Learn Coursera Course
 
 This is a project based on the lessons I've learnt in a coursera course - Learning How to Learn by Dr. Barbara Oakley and Dr. Terrence Sejnowski. 
