@@ -5,23 +5,28 @@ const previousButton = document.querySelector('.previous-button');
 const nextButton = document.querySelector('.next-button');
 const dots = [...carousel.querySelectorAll(".carousel__dot")];
 
+// => Function to shift current slide to target slide:
+const switchSlide = (currentSlide, targetSlide) => {
+  const destination = getComputedStyle(targetSlide).left;
+  contents.style.transform = `translateX(-${destination})`;
+  currentSlide.classList.remove("is-selected");
+  targetSlide.classList.add("is-selected");
+};
+
 // For displaying the next slide on each click:
 nextButton.addEventListener('click', event => {
   const currentSlide = contents.querySelector(".is-selected");
   const nextSlide = currentSlide.nextElementSibling;
-  const destination = getComputedStyle(nextSlide).left;
   const indexCurrentSlide = slides.indexOf(currentSlide);
 
-  // => To 'move' the slide to the next slide:
-  contents.style.transform = `translateX(-${destination})`;
+  // Shifting to next slide by calling function:
+  switchSlide(currentSlide, nextSlide);
 
-  currentSlide.classList.remove("is-selected");
-  nextSlide.classList.add("is-selected");
-
+  // => Shifting dot selection to next:
   dots[indexCurrentSlide].classList.remove("is-selected");
   dots[indexCurrentSlide + 1].classList.add("is-selected");
 
-  // => To add and remove previous and next buttons from display according to the first & last locations of slide:
+  // => Remove next button according to last slide, and show if otherwise:
   if (!nextSlide.nextElementSibling) {
     nextButton.classList.add("is-hidden");
   }
@@ -35,18 +40,16 @@ nextButton.addEventListener('click', event => {
 previousButton.addEventListener('click', event => {
   const currentSlide = contents.querySelector(".is-selected");
   const previousSlide = currentSlide.previousElementSibling;
-  const nextSlide = currentSlide.nextElementSibling;
   const indexCurrentSlide = slides.indexOf(currentSlide);
 
-  const destination = getComputedStyle(previousSlide).left;
-  contents.style.transform = `translateX(-${destination})`;
+  // Shifting to previous slide by calling function:
+  switchSlide(currentSlide, previousSlide);
 
-  currentSlide.classList.remove("is-selected");
-  previousSlide.classList.add("is-selected");
-
+  // Shifting dot selection to previous:
   dots[indexCurrentSlide].classList.remove("is-selected");
   dots[indexCurrentSlide - 1].classList.add("is-selected");
 
+  // => Remove previous button according at first slide, and show if otherwise:
   if (!previousSlide.previousElementSibling) {
     previousButton.classList.add("is-hidden");
   }
