@@ -1,4 +1,4 @@
-const carousel = document.querySelector('.carousel')
+const carousel = document.querySelector('.carousel');
 const slides = [...carousel.querySelectorAll(".carousel__slide")];
 const contents = document.querySelector(".carousel__contents");
 const previousButton = document.querySelector('.previous-button');
@@ -75,12 +75,12 @@ previousButton.addEventListener('click', event => {
 // For navigating carousel with dots:
 dots.forEach(dot => {
   dot.addEventListener('click', event => {
-    const currentSlide = contents.querySelector('.is-selected')
+    const currentSlide = contents.querySelector('.is-selected');
     const clickedDotIndex = dots.findIndex(d => d === dot);
     const slideToShow = slides[clickedDotIndex];
     const currentDot = dotsContainer.querySelector('.is-selected');
 
-    switchSlide(currentSlide, slideToShow)
+    switchSlide(currentSlide, slideToShow);
 
     // Shifting dot selection to clicked dot:
     highlightDot(currentDot, dot);
@@ -94,5 +94,5 @@ dots.forEach(dot => {
 const slideWidth = slides[0].getBoundingClientRect().width
 
 slides.forEach((slide, index) => {
-  slide.style.left = slideWidth * index + 'px'
+  slide.style.left = slideWidth * index + 'px';
 })
