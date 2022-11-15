@@ -1,9 +1,10 @@
 const carousel = document.querySelector('.carousel');
-const slides = [...carousel.querySelectorAll(".carousel__slide")];
 const contents = document.querySelector(".carousel__contents");
 const previousButton = document.querySelector('.previous-button');
 const nextButton = document.querySelector('.next-button');
 const dotsContainer = carousel.querySelector('.carousel__dots')
+
+const slides = [...carousel.querySelectorAll(".carousel__slide")];
 const dots = [...carousel.querySelectorAll(".carousel__dot")];
 
 // => Function to shift current slide to target slide:
