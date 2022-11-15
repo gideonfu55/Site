@@ -21,11 +21,11 @@ const highlightDot = (currentDot, targetDot) => {
 }
 
 // => Function to show/hide carousel buttons:
-const showHideArrowButtons = clickedDotIndex => {
-  if (clickedDotIndex === 0) {
+const showHideArrowButtons = targetDotIndex => {
+  if (targetDotIndex === 0) {
     nextButton.classList.remove("is-hidden");
     previousButton.classList.add("is-hidden");
-  } else if (clickedDotIndex === dots.length - 1) {
+  } else if (targetDotIndex === dots.length - 1) {
     previousButton.classList.remove("is-hidden");
     nextButton.classList.add("is-hidden");
   } else {
@@ -39,6 +39,7 @@ nextButton.addEventListener('click', event => {
   const currentSlide = contents.querySelector(".is-selected");
   const nextSlide = currentSlide.nextElementSibling;
   const indexCurrentSlide = slides.indexOf(currentSlide);
+  const indexNextSlide = slides.findIndex(slide => slide === nextSlide);
   const currentDot = dotsContainer.querySelector(".is-selected");
   const nextDot = currentDot.nextElementSibling;
 
@@ -49,13 +50,7 @@ nextButton.addEventListener('click', event => {
   highlightDot(currentDot, nextDot);
 
   // => Remove next button according to last slide, and show if otherwise:
-  if (!nextSlide.nextElementSibling) {
-    nextButton.classList.add("is-hidden");
-  }
-
-  if (nextSlide.previousElementSibling) {
-    previousButton.classList.remove("is-hidden");
-  }
+  showHideArrowButtons(indexNextSlide);
 })
 
 // For previous button to display the previous slide on each click:
@@ -63,6 +58,7 @@ previousButton.addEventListener('click', event => {
   const currentSlide = contents.querySelector(".is-selected");
   const previousSlide = currentSlide.previousElementSibling;
   const indexCurrentSlide = slides.indexOf(currentSlide);
+  const indexPreviousSlide = slides.findIndex(slide => slide === previousSlide);
   const currentDot = dotsContainer.querySelector('.is-selected');
   const previousDot = currentDot.previousElementSibling;
 
@@ -73,13 +69,7 @@ previousButton.addEventListener('click', event => {
   highlightDot(currentDot, previousDot);
 
   // => Remove previous button according at first slide, and show if otherwise:
-  if (!previousSlide.previousElementSibling) {
-    previousButton.classList.add("is-hidden");
-  }
-
-  if (previousSlide.nextElementSibling) {
-    nextButton.classList.remove("is-hidden");
-  }
+  showHideArrowButtons(indexPreviousSlide);
 })
 
 // For navigating carousel with dots:
