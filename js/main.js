@@ -1,19 +1,59 @@
+// Required variables:
 const carousel = document.querySelector('.carousel');
 const contents = carousel.querySelector(".carousel__contents");
 const previousButton = carousel.querySelector('.previous-button');
 const nextButton = carousel.querySelector('.next-button');
-const dotsContainer = carousel.querySelector('.carousel__dots')
-
 const slides = [...carousel.querySelectorAll(".carousel__slide")];
-const dots = [...carousel.querySelectorAll(".carousel__dot")];
 
-// => Function to get current slide index:
+const dotsContainer = createDots(slides);
+const dots = [...dotsContainer.children];
+
+// ========================
+// Functions
+// ========================
+
+/**
+ * => Create the dots for carousel
+ * 
+ * @returns HTML for dots
+ * 
+ */
+function createDots(slides) {
+  const dotsContainer = document.createElement('div');
+  dotsContainer.classList.add('carousel__dots');
+
+  slides.forEach(slide => {
+    const dot = document.createElement('button');
+    dot.classList.add('carousel__dot');
+
+    if (slide.classList.contains('is-selected')) {
+      dot.classList.add('is-selected');
+    }
+
+    dotsContainer.appendChild(dot);
+  })
+
+  return dotsContainer;
+}
+
+/** => Get current slide index
+ * 
+ * @returns The index of current slide
+ * 
+ */
 const getCurrentSlideIndex = () => {
   const currentSlide = contents.querySelector('.is-selected');
   return slides.findIndex(slide => slide === currentSlide);
 }
 
-// => Function to shift current slide to target slide:
+/**
+ * => To shift current slide to target slide
+ * 
+ * @param {number} currentSlideIndex
+ * @param {number} targetSlideIndex
+ * 
+ **/
+
 const switchSlide = (currentSlideIndex, targetSlideIndex) => {
   const currentSlide = slides[currentSlideIndex];
   const targetSlide = slides[targetSlideIndex];
@@ -24,7 +64,13 @@ const switchSlide = (currentSlideIndex, targetSlideIndex) => {
   targetSlide.classList.add("is-selected");
 }
 
-// => Function to select/de-select target dot:
+/**
+ * => To highlight selected dot
+ * 
+ * @param {number} currentSlideIndex
+ * @param {number} targetSlideIndex
+ * 
+ **/
 const highlightDot = (currentSlideIndex, targetSlideIndex) => {
   const currentDot = dots[currentSlideIndex];
   const targetDot = dots[targetSlideIndex];
@@ -32,7 +78,12 @@ const highlightDot = (currentSlideIndex, targetSlideIndex) => {
   targetDot.classList.add('is-selected');
 }
 
-// => Function to show/hide carousel buttons:
+/**
+ * => To show/hide carousel buttons:
+ * 
+ * @param {number} targetSlideIndex
+ * 
+ **/
 const showHideArrowButtons = targetSlideIndex => {
   if (targetSlideIndex === 0) {
     nextButton.classList.remove("is-hidden");
@@ -46,6 +97,13 @@ const showHideArrowButtons = targetSlideIndex => {
   }
 }
 
+// ========================
+// Execution
+// ========================
+
+// To add dotsContainer to HTML:
+carousel.appendChild(dotsContainer);
+
 // For displaying the next slide on each click:
 nextButton.addEventListener('click', event => {
   const currentSlideIndex = getCurrentSlideIndex();
@@ -54,10 +112,10 @@ nextButton.addEventListener('click', event => {
   // Shifting to next slide by calling function:
   switchSlide(currentSlideIndex, nextSlideIndex);
 
-  // => Shifting dot selection to next:
+  // Shifting dot selection to next:
   highlightDot(currentSlideIndex, nextSlideIndex);
 
-  // => Remove next button according to last slide, and show if otherwise:
+  // Remove next button according to last slide, and show if otherwise:
   showHideArrowButtons(nextSlideIndex);
 })
 
