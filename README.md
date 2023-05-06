@@ -11,3 +11,5 @@ To learn more on the topics presented in each slide, click on it!
 If you are interested, the MOOC can be enrolled here: https://www.coursera.org/learn/learning-how-to-learn.
 
 Cheers!
+
+Sidenote: Sorry, it is not mobile responsive..
