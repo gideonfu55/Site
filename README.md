@@ -10,7 +10,7 @@ I have benefited from this course immensely and hope to apply some of these less
 
 To learn more on the topics presented in each slide, click on it!
 
-If you are interested, the MOOC can be enrolled here: https://www.coursera.org/learn/learning-how-to-learn.
+If you are interested, the MOOC can be enrolled here: <https://www.coursera.org/learn/learning-how-to-learn>.
 
 Cheers!
 
