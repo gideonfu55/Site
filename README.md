@@ -14,4 +14,4 @@ If you are interested, the MOOC can be enrolled here: <https://www.coursera.org/
 
 Cheers!
 
-Side note: Sorry, it is not mobile responsive..
+Side note: Sorry, it is not fully responsive on landscape mode on mobile phones..
