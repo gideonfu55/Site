@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // Required variables:
 const carousel = document.querySelector('.carousel');
 const contents = carousel.querySelector(".carousel__contents");
