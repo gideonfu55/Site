@@ -148,3 +148,13 @@ const slideWidth = slides[0].getBoundingClientRect().width
 slides.forEach((slide, index) => {
   slide.style.left = slideWidth * index + 'px';
 })
+
+// ==============================
+// Changing Viewport Refresh Rate
+// ==============================
+window.addEventListener('resize', function() {
+  setTimeout(function() {
+    var viewport = document.querySelector('meta[name="viewport"]');
+    viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
+  }, 100);
+});
