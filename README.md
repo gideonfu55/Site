@@ -14,4 +14,4 @@ If you are interested, the MOOC can be enrolled here: <https://www.coursera.org/
 
 Cheers!
 
-Side note: Refreshing on landscape mode on mobiles will set the viewport correctly and provide the proper page.
+Side note: Refreshing the page when viewing the first time on landscape mode in mobiles will set the viewport correctly and provide the proper page when switching between protrait and landscape. Not sure why as of now.
